@@ -1,7 +1,21 @@
 #include "Dwarf.h"
 
-//Dwarf::Dwarf
+Dwarf::Dwarf(std::string name_, int hp_, int armor_)
+{
+    //name, hit points, armor.
+}
 
-//Dwarf::getName
+Dwarf::~Dwarf()
+{
 
-//Dwarf::getStats
+}
+
+const std::string& Dwarf::getName()
+{
+
+}
+
+std::string Dwarf:getStats()
+{
+
+}

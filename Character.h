@@ -7,6 +7,7 @@
 
 #include "Item.h"
 
+//ctor of dwarf: name, hit points, armor.
 struct Character
 {
     Character(int hp, int armor_, int attackDamage_ );
