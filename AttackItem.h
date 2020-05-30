@@ -12,8 +12,5 @@ struct AttackItem : Item
 
     }
     
-    void use(Character* character)
-    { 
-        useAttackItem(character, this); // Utility.h
-    }
+    void use(Character* character) override;
 };

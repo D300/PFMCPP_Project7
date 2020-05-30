@@ -5,7 +5,7 @@
 struct Character;
 struct Item
 {
-    virtual ~Item() { }
+    virtual ~Item();
 
     virtual void use(Character*) = 0; // must be overridden
     
