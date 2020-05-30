@@ -95,8 +95,20 @@ int main()
     DragonSlayer dragonSlayer { "Virgil the Dragon Slayer", 8, 5 };
     
     /*
-    std::cout << "\nstart of battle" << std::endl;
+    //DragonSlayers get a 10x boost when attacking dragons, from their attack item.
+        //so their attack item should boost their attack damage by a factor of 10
+        //this means you need to GET the attack damage, multiply it by the item's boost, and BOOST the attackDamage with that multiplied value.  
+        //check Character.h for available member functions you can use.
+    */
+
+
     
+    // std::cout << "\nstart of battle" << std::endl;
+    
+    // Tests
+    // dragonSlayer.attack( dragon ); //dragon is slayed.
+
+    /*
     paladin.defend();
     dragon.attack( paladin );
     dwarf.attack( dragon );

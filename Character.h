@@ -11,7 +11,7 @@
 struct Character
 {
     Character(int hp, int armor_, int attackDamage_ );
-    virtual ~Character() { }
+    virtual ~Character() { } // must be overriden?
     
     /*
      a pure virtual getName function. X

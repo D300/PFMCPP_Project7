@@ -14,8 +14,6 @@ name(name_)
     defensiveItems = makeDefensiveItems(1);
 }
 
-Dwarf::~Dwarf() { }
-
 const std::string& Dwarf::getName()
 {
     return name;
