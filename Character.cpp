@@ -1,9 +1,9 @@
 #include "Character.h"
 #include <iostream>
-#include <vector>
-
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
+
+#include "Utility.h"
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
     hitPoints(hp),
@@ -15,17 +15,22 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialAttackDamage.reset( new int( attackDamage) );
 }
 
+Character::~Character() {}
+
 void Character::attack( Character& other )
 {
     if( hitPoints <= 0 )
     {
         std::cout << getName() << " can't attack. " << getName() << " is dead." << std::endl;
+
         std::cout << "make another party member use an item to revive them" << std::endl << std::endl;
+        
         return;
     }
         
     isDefending = false;
     std::cout << getName() << " has attacked " << other.getName() << std::endl;
+
     //subtract attackDamage from other->hitPoints
     if( other.takeDamage(attackDamage) <= 0 )
     {
@@ -52,6 +57,7 @@ void Character::defend()
 void Character::help(Character& other)
 {
     std::cout << getName() << " is going to help " << other.getName() << std::endl;
+
     for( auto& item : helpfulItems )
     {
         if( auto* helpfulItem = dynamic_cast<HelpfulItem*>(item.get()) )
@@ -86,8 +92,16 @@ int Character::takeDamage(int damage)
     return hitPoints;
 }
 
+void boost(int& current, int& initial)
+{
+    if ( current < initial)
+        current = initial;
+        
+    current *= 1.1f;
+    initial = current;
+}
 
-#include <assert>
+// #include <assert>
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
@@ -97,21 +111,14 @@ void Character::attackInternal(Character& other)
             a) your stats are restored to their initial value if they are lower than it.
             b) your stats are boosted 10%
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
-      */
-        assert(false);
-        std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
+        */
+        
+        boost(this->hitPoints, *this->initialHitPoints);
+        boost(this->attackDamage, *this->initialAttackDamage);
+        boost(this->armor, *this->initialArmorLevel);
+
+        // assert(false);
+        std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;
     }
 }
 
-void Character::printStats()
-{
-    std::cout << getName() << "'s stats: " << std::endl;
-    assert(false);
-    /*
-    make your getStats() use a function from the Utility.h
-    */
-    std::cout << getStats(); 
-    
-    std::cout << std::endl;
-    std::cout << std::endl;
-}

@@ -7,14 +7,15 @@
 
 #include "Item.h"
 
+//ctor of dwarf: name, hit points, armor.
 struct Character
 {
     Character(int hp, int armor_, int attackDamage_ );
-    virtual ~Character() { }
+    virtual ~Character();
     
     /*
-     a pure virtual getName function.
-     derived class stores the name, not the base class.
+     a pure virtual getName function. X
+     derived class stores the name, not the base class. X
      */
     
     virtual const std::string& getName() = 0;
@@ -56,17 +57,20 @@ struct Character
     void printStats()
     {
         std::cout << getName() << "'s stats: " << std::endl;
-        std::cout << getStats(); //make your getStats() use a function from the Utility.h
+        std::cout << getStats(); //make your getStats() use a function from the Utility.h X
         
         std::cout << std::endl;
         std::cout << std::endl;
     }
+
 protected:
     std::vector<std::unique_ptr<Item>> defensiveItems;
     std::vector<std::unique_ptr<Item>> helpfulItems;
+
     int hitPoints, armor;
     int attackDamage;
     bool isDefending = false;
+
 private:
     std::unique_ptr<int> initialHitPoints, initialArmorLevel, initialAttackDamage;
     

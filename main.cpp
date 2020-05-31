@@ -62,8 +62,12 @@ send me a DM to check your pull request
 #include "Paladin.h"
 #include "Dragon.h"
 #include "DragonSlayer.h"
+
+#include "Utility.h"
+
 //==========================================================
 //==========================================================
+
 int main()
 {
                       //name, hit points, armor. 
@@ -71,6 +75,7 @@ int main()
     Paladin paladin { "Warrick the Paladin", 5, 2 };
     Dragon dragon { "Garry The Dragon", 200, 50 };
     DragonSlayer dragonSlayer { "Virgil the Dragon Slayer", 8, 5 };
+    
     
     std::cout << "\nstart of battle" << std::endl;
 
@@ -90,11 +95,197 @@ int main()
     dragonSlayer.attack( paladin );
     dragonSlayer.attack( dwarf ); 
     
+
     std::cout << std::endl << "end of battle stats:" << std::endl;
     
     std::vector<Character*> characters { &dwarf, &paladin, &dragon, &dragonSlayer };
     for( auto* character : characters )
         character->printStats();
     
+    
     return 0;
 }
+
+/*
+This is the expected output, starting at 'start of battle'
+use https://www.diffchecker.com/diff to make sure it is the same.
+
+start of battle
+Warrick the Paladin is defending!!
+Warrick the Paladin's armor level has been boosted to 5
+Garry The Dragon is attacking Warrick the Paladin!!!
+Garry The Dragon has attacked Warrick the Paladin
+Warrick the Paladin is taking 80 damage!
+Warrick the Paladin has died in battle!
+Warrick the Paladin's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 10
+    is defending: true
+    3 helpful items,  7 defensive items
+
+Garry The Dragon defeated Warrick the Paladin and leveled up!
+Maldin the Dwarf has attacked Garry The Dragon
+Garry The Dragon is taking 4 damage!
+Garry The Dragon's stats: 
+    hitPoints: 220
+    armor: 51
+    attack damage: 88
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Warrick the Paladin can't attack. Warrick the Paladin is dead.
+make another party member use an item to revive them
+
+Virgil the Dragon Slayer is going to help Warrick the Paladin
+Warrick the Paladin's hit point level has been boosted to 3
+Warrick the Paladin has attacked Garry The Dragon
+Garry The Dragon is taking 10 damage!
+Garry The Dragon's stats: 
+    hitPoints: 220
+    armor: 41
+    attack damage: 88
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Garry The Dragon is attacking Maldin the Dwarf!!!
+Garry The Dragon has attacked Maldin the Dwarf
+Maldin the Dwarf is taking 88 damage!
+Maldin the Dwarf has died in battle!
+Maldin the Dwarf's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 4
+    is defending: false
+    3 helpful items,  6 defensive items
+
+Garry The Dragon defeated Maldin the Dwarf and leveled up!
+Warrick the Paladin is going to help Maldin the Dwarf
+Maldin the Dwarf's hit point level has been boosted to 4
+Garry The Dragon is attacking Virgil the Dragon Slayer!!!
+Virgil the Dragon Slayer is defending!!
+Virgil the Dragon Slayer's armor level has been boosted to 9
+Virgil the Dragon Slayer is attacking Garry The Dragon !!
+Virgil the Dragon Slayer's attack damage level has been boosted to 44
+Garry The Dragon is taking 44 damage!
+Garry The Dragon's stats: 
+    hitPoints: 242
+    armor: 16
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Garry The Dragon is taking 44 damage!
+Garry The Dragon's stats: 
+    hitPoints: 214
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Garry The Dragon is taking 44 damage!
+Garry The Dragon's stats: 
+    hitPoints: 170
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Garry The Dragon is taking 44 damage!
+Garry The Dragon's stats: 
+    hitPoints: 126
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Garry The Dragon is taking 44 damage!
+Garry The Dragon's stats: 
+    hitPoints: 82
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Garry The Dragon is taking 44 damage!
+Garry The Dragon's stats: 
+    hitPoints: 38
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Garry The Dragon is taking 44 damage!
+Garry The Dragon has died in battle!
+Garry The Dragon's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Virgil the Dragon Slayer has attacked Garry The Dragon
+Garry The Dragon is taking 44 damage!
+Garry The Dragon has died in battle!
+Garry The Dragon's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Virgil the Dragon Slayer defeated Garry The Dragon and leveled up!
+Virgil the Dragon Slayer is attacking Warrick the Paladin !!
+Virgil the Dragon Slayer has attacked Warrick the Paladin
+Warrick the Paladin is taking 48 damage!
+Warrick the Paladin has died in battle!
+Warrick the Paladin's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 10
+    is defending: false
+    3 helpful items,  7 defensive items
+
+Virgil the Dragon Slayer defeated Warrick the Paladin and leveled up!
+Virgil the Dragon Slayer is attacking Maldin the Dwarf !!
+Virgil the Dragon Slayer has attacked Maldin the Dwarf
+Maldin the Dwarf is taking 52 damage!
+Maldin the Dwarf has died in battle!
+Maldin the Dwarf's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 4
+    is defending: false
+    3 helpful items,  6 defensive items
+
+Virgil the Dragon Slayer defeated Maldin the Dwarf and leveled up!
+
+end of battle stats:
+Maldin the Dwarf's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 4
+    is defending: false
+    3 helpful items,  6 defensive items
+
+Warrick the Paladin's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 10
+    is defending: false
+    3 helpful items,  7 defensive items
+
+Garry The Dragon's stats: 
+    hitPoints: 0
+    armor: 0
+    attack damage: 96
+    is defending: false
+    0 helpful items,  0 defensive items
+
+Virgil the Dragon Slayer's stats: 
+    hitPoints: 8
+    armor: 9
+    attack damage: 57
+    is defending: false
+    4 helpful items,  2 defensive items
+*/
