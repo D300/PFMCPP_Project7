@@ -95,10 +95,10 @@ int Character::takeDamage(int damage)
 void boost(int& current, int& initial)
 {
     if ( current < initial)
-            current = initial;
+        current = initial;
         
-        current *= 1.1f;
-        initial = current;
+    current *= 1.1f;
+    initial = current;
 }
 
 // #include <assert>

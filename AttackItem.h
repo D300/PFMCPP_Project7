@@ -2,9 +2,8 @@
 
 #include "AttackItem.h"
 #include "Item.h"
-#include "Utility.h"
 
-struct Character; // forward declaration 
+struct Character;
 struct AttackItem : Item
 {
     AttackItem() : Item("attack item", 10) 

@@ -56,24 +56,6 @@ send me a DM to check your pull request
 
  */
 
-/*
-ERRORS:
-...abstract class... X
---> base class init
-
-main.cpp:(.text+0x60): undefined reference to `Dwarf::Dwarf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, int)'
-
-
-main.cpp:(.text+0x20b): undefined reference to `Character::defend()'
-
-/tmp/main-4061ea.o: In function `Character::~Character()':
-main.cpp:(.text._ZN9CharacterD2Ev[_ZN9CharacterD2Ev]+0xa): undefined reference to `vtable for Character'
-
-clang-7: error: linker command failed with exit code 1 (use -v to see invocation)
-
-*/
-
-
 #include "Item.h"
 #include "Character.h"
 #include "Dwarf.h"

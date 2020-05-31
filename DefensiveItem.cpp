@@ -4,7 +4,6 @@
 
 void DefensiveItem::use(Character* character)
 {
-    // why derefencing this?
     useDefensiveItem(character, *this);
 }
 
